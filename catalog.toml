@@ -1,0 +1,13 @@
+# Noctalia v5 plugin catalog.
+
+[[plugin]]
+id = "maylton/niri-auto-tile"
+name = "Niri Auto-Tile"
+version = "0.3.1"
+author = "Maylton Fernandes (v5 port); pir0c0pter0 (original plugin)"
+license = "MIT"
+icon = "layout-columns"
+description = "Automatically redistributes Niri column widths and optionally centers a single tiled window."
+deprecated = false
+min_noctalia = "5.0.0"
+tags = ["niri", "tiling", "utility", "bar"]

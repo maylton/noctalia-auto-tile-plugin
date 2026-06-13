@@ -1,0 +1,108 @@
+id = "maylton/niri-auto-tile"
+name = "Niri Auto-Tile"
+version = "0.3.1"
+min_noctalia = "5.0.0"
+author = "Maylton Fernandes (v5 port); pir0c0pter0 (original plugin)"
+license = "MIT"
+deprecated = false
+icon = "layout-columns"
+description = "Automatically redistributes Niri column widths and optionally centers a single tiled window."
+tags = ["niri", "tiling", "utility", "bar"]
+
+[[setting]]
+key = "enabled"
+type = "bool"
+label = "Enable automatic redistribution"
+description = "Resize tiled columns automatically when the window layout changes."
+default = true
+
+[[setting]]
+key = "max_visible"
+type = "int"
+label = "Maximum visible columns"
+description = "The number of columns that should fit across an output."
+default = 4
+min = 1
+max = 8
+
+[[setting]]
+key = "only_at_max"
+type = "bool"
+label = "Only redistribute at the limit"
+description = "Do not resize until the number of columns reaches the configured maximum."
+default = true
+
+[[setting]]
+key = "center_single_window"
+type = "bool"
+label = "Center a single tiled window"
+description = "Automatically center the column when an active workspace contains exactly one tiled window."
+default = true
+
+[[setting]]
+key = "per_workspace"
+type = "bool"
+label = "Use per-workspace limits"
+description = "Read workspace-specific limits from the JSON field below."
+default = false
+
+[[setting]]
+key = "workspace_config"
+type = "string"
+label = "Workspace limits (JSON)"
+description = "Example: {\"1\": 4, \"3\": 2}. Keys may be workspace IDs, indices, or names."
+default = "{}"
+visible_when = { key = "per_workspace", values = ["true"] }
+advanced = true
+
+[[setting]]
+key = "debounce_ms"
+type = "int"
+label = "Debounce delay (ms)"
+description = "Wait this long after the latest layout event before resizing."
+default = 300
+min = 50
+max = 2000
+advanced = true
+
+[[setting]]
+key = "max_events_per_second"
+type = "int"
+label = "Maximum events per second"
+description = "Circuit breaker for event floods from the compositor."
+default = 20
+min = 1
+max = 100
+advanced = true
+
+[[setting]]
+key = "debug"
+type = "bool"
+label = "Debug logging"
+description = "Print detailed daemon activity to the Noctalia log."
+default = false
+advanced = true
+
+[[service]]
+id = "service"
+entry = "service.luau"
+
+[[widget]]
+id = "auto-tile"
+entry = "widget.luau"
+
+  [[widget.setting]]
+  key = "glyph"
+  type = "glyph"
+  label = "Glyph"
+  default = "layout-columns"
+
+  [[widget.setting]]
+  key = "show_count"
+  type = "bool"
+  label = "Show column limit"
+  default = true
+
+[[shortcut]]
+id = "toggle"
+entry = "shortcut.luau"

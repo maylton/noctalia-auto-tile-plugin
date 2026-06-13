@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+runtime-config.json
+auto-tile.pid
+.DS_Store
