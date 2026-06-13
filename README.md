@@ -11,7 +11,7 @@ Python 3.
 
 ```bash
 noctalia msg plugins source add maylton-plugins git \
-  https://github.com/maylton/noctalia-v5-plugins
+  https://github.com/maylton/noctalia-auto-tile-plugin
 
 noctalia msg plugins update maylton-plugins
 
