@@ -1,23 +1,19 @@
-# Maylton's Noctalia v5 plugins
-
-A Git source for experimental Noctalia v5 plugins.
-
-## Available plugin
-
 ### Niri Auto-Tile
 
-Automatically redistributes Niri column widths and optionally centers a single
-tiled window. Requires Niri and Python 3.
+This is a port of  the The original Noctalia V4 plugin created by pir0c0pter0. Automatically redistributes Niri column widths and optionally centers a single
+tiled window.
+The plugin listens to Niri's JSON event stream and automatically redistributes tiled column widths when windows are opened or closed. It also supports per-workspace limits, an “only at max” mode, a bar widget and a Control Center shortcut.
 
-## Add this source to Noctalia
+## Requirements
+Python 3.
 
-Replace `<GITHUB_USER>` with the account that hosts this repository:
+## Instalation
 
-```bash
-noctalia msg plugins source add maylton-plugins git https://github.com/<GITHUB_USER>/noctalia-v5-plugins
+noctalia msg plugins source add maylton-plugins git \
+  https://github.com/maylton/noctalia-v5-plugins
+
 noctalia msg plugins update maylton-plugins
 noctalia msg plugins enable maylton/niri-auto-tile
-```
 
 The same can be done in **Settings → Plugins → Add source**.
 
@@ -42,3 +38,4 @@ therefore be committed inside the plugin directory, as they are here.
 ## Status
 
 The Noctalia v5 plugin API is experimental and can introduce breaking changes.
+This port was vibe-coded. Use at your own risk.
