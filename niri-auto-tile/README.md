@@ -1,50 +1,43 @@
-# Niri Auto-Tile for Noctalia v5
+### Niri Auto-Tile
 
-A Noctalia v5 port of the original `niri-auto-tile` plugin by
-[pir0c0pter0](https://github.com/pir0c0pter0/niri-auto-tile).
-
-It listens to Niri's JSON event stream and automatically:
-
-- redistributes tiled column widths;
-- applies global or per-workspace limits;
-- optionally waits until the configured column limit is reached;
-- centers a workspace containing exactly one tiled window;
-- exposes a bar widget and a Control Center shortcut.
+This is a port of  the The original Noctalia V4 plugin created by pir0c0pter0. Automatically redistributes Niri column widths and optionally centers a single
+tiled window.
+The plugin listens to Niri's JSON event stream and automatically redistributes tiled column widths when windows are opened or closed. It also supports per-workspace limits, an “only at max” mode, a bar widget and a Control Center shortcut.
 
 ## Requirements
+Python 3.
 
-- Noctalia v5 alpha with plugin support
-- Niri
-- Python 3
-- POSIX shell utilities (`sh`, `kill`, `cat`)
-
-No third-party Python modules are required.
-
-## Install from a Noctalia source
-
-After adding the repository containing this plugin as a Git source, enable:
+## Instalation
 
 ```bash
+noctalia msg plugins source add maylton-plugins git \
+  https://github.com/maylton/noctalia-auto-tile-plugin
+
+noctalia msg plugins update maylton-plugins
+
 noctalia msg plugins enable maylton/niri-auto-tile
 ```
+The same can be done in **Settings → Plugins → Add source**.
 
-Then add `Niri Auto-Tile` to the bar and optionally add its shortcut to the
-Control Center.
+After enabling the plugin, add its widget to the bar. The plugin-level settings
+are available from the gear icon on its row.
 
-## Controls
+## Repository layout
 
-- Left click: enable or disable automation for the current session.
-- Right click: force redistribution immediately.
+```text
+catalog.toml
+niri-auto-tile/
+  plugin.toml
+  service.luau
+  widget.luau
+  shortcut.luau
+  auto-tile.py
+```
 
-Persistent options are under **Settings → Plugins → Niri Auto-Tile**.
+No installer is run by the plugin manager. All required runtime files must
+therefore be committed inside the plugin directory, as they are here.
 
-## Diagnostics
+## Status
 
-The widget displays `…` while starting and `!` when an error is reported.
-To inspect the local runtime copy, run `diagnose.sh` from the materialized
-plugin directory shown by Noctalia's plugin debug information.
-
-## Credits
-
-- Original v4 plugin and concept: pir0c0pter0
-- Noctalia v5 port: Maylton Fernandes and contributors
+The Noctalia v5 plugin API is experimental and can introduce breaking changes.
+This port was vibe-coded. Use at your own risk.
