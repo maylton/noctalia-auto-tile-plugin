@@ -9,12 +9,14 @@ Python 3.
 
 ## Instalation
 
+```bash
 noctalia msg plugins source add maylton-plugins git \
   https://github.com/maylton/noctalia-v5-plugins
 
 noctalia msg plugins update maylton-plugins
-noctalia msg plugins enable maylton/niri-auto-tile
 
+noctalia msg plugins enable maylton/niri-auto-tile
+```
 The same can be done in **Settings → Plugins → Add source**.
 
 After enabling the plugin, add its widget to the bar. The plugin-level settings
